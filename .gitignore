@@ -50,3 +50,6 @@ replay_pid*.log
 ### Claude Code local tooling ###
 .claude/settings.local.json
 .claude/scheduled_tasks.lock
+
+### Local-only learning notes (kept on disk, never pushed) ###
+NOTES.md
