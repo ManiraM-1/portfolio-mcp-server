@@ -34,7 +34,7 @@ build/
 
 ### Secrets ###
 application-secrets.properties
-src/main/resources/application.properties
+run-local.ps1
 
 ### Build ###
 *.jar
