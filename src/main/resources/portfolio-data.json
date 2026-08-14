@@ -1,0 +1,91 @@
+{
+  "experience": [
+    {
+      "role": "Cloud Platform Engineer Intern",
+      "company": "Chargebee",
+      "location": "Chennai, India",
+      "period": "Mar 2026 – Present",
+      "bullets": [
+        "Built an internal MCP server exposing engineering documentation as callable tools to AI coding assistants",
+        "Automated documentation ingestion pipeline on AWS S3 with GitHub Actions CI validation",
+        "Integrated server into Chargebee's internal agentic AI platform, onboarding workflows from payments, checkout, and release teams"
+      ]
+    },
+    {
+      "role": "Backend Developer (Open Source)",
+      "company": "GirlScript Summer of Code (GSSoC)",
+      "location": "Remote",
+      "period": "Jul 2025 – Oct 2025",
+      "bullets": [
+        "Led greenfield development of an agriculture e-commerce backend",
+        "Designed schema, DTOs and multi-tier architecture in Spring Boot and MySQL",
+        "De facto Technical Lead for 10+ contributors, defining Git workflows and PR review standards"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Gatify",
+      "subtitle": "Unified SaaS platform for gated community governance",
+      "metric": "500+ residents",
+      "tech": ["Java", "Spring Boot", "Spring Security", "React", "MongoDB"],
+      "bullets": [
+        "12+ integrated modules — amenities booking, complaint tracking, visitor management, billing automation",
+        "RBAC securing data across 5 distinct user permission levels",
+        "Pitched to 3+ real-estate stakeholders and 2 gated communities"
+      ],
+      "links": {
+        "landing": "https://gatify-community-pulse.lovable.app/",
+        "github": null
+      }
+    },
+    {
+      "name": "Fitness Tracking Application",
+      "subtitle": "Event-driven microservices for fitness monitoring",
+      "metric": "3 microservices",
+      "tech": ["Spring Boot", "Eureka", "RabbitMQ", "Keycloak", "MongoDB", "MySQL"],
+      "bullets": [
+        "3 independent services (User, Activity, AI) with async decoupled communication",
+        "AI recommendation engine on Google Gemini API for personalised fitness plans",
+        "OAuth2 authentication via Keycloak"
+      ],
+      "links": {
+        "github": "https://github.com/ManiraM-1/FitnessApp"
+      }
+    },
+    {
+      "name": "Dual-Signal Cryptocurrency Analysis",
+      "subtitle": "Predictive trading engine combining technical and sentiment signals",
+      "metric": ">60% accuracy",
+      "tech": ["Spring Boot", "Python", "XGBoost", "Bi-LSTM", "CoreNLP"],
+      "bullets": [
+        "Spring Boot orchestration layer integrated with a Python ML model",
+        "Technical indicators fused with real-time NLP sentiment analysis",
+        "Achieved >60% directional prediction accuracy"
+      ],
+      "links": {
+        "github": "https://github.com/ManiraM-1/Crypto-Analysis-System"
+      }
+    }
+  ],
+  "skills": {
+    "Languages": ["Java", "Python", "JavaScript", "TypeScript", "SQL", "HTML", "CSS"],
+    "Backend & AI": ["Spring Boot", "Spring Security", "REST APIs", "FastMCP", "MCP", "RabbitMQ", "Keycloak", "OAuth2", "JWT", "Hibernate JPA", "Kafka"],
+    "Cloud & DevOps": ["AWS S3/EC2/ECS/IAM", "GCP", "Docker", "GitHub Actions", "Datadog", "Linux"],
+    "Databases": ["MySQL", "MongoDB", "Redis"],
+    "Testing": ["JUnit", "Mockito", "SonarQube", "Postman", "Git"]
+  },
+  "contact": {
+    "name": "Maniram Tatipamula",
+    "email": "maniram24crt@gmail.com",
+    "linkedin": "https://linkedin.com/in/maniram-tatipamula",
+    "github": "https://github.com/ManiraM-1",
+    "location": "Vijayawada, Andhra Pradesh, India",
+    "education": {
+      "degree": "B.Tech Computer Science",
+      "institution": "VIT-AP University",
+      "period": "2022–2026",
+      "cgpa": "9.32"
+    }
+  }
+}
