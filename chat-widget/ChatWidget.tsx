@@ -18,6 +18,7 @@ const WELCOME_MESSAGE: ChatMessage = {
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([WELCOME_MESSAGE]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -31,6 +32,32 @@ const ChatWidget = () => {
       // Cold start or offline — the chat itself will surface this if it matters.
     });
   }, []);
+
+  // The hero's cinematic intro already fills its entire bottom edge (name/
+  // subtitle bottom-left, play/mute controls bottom-right, scroll hint
+  // bottom-center) — there's no corner to dock a floating launcher there
+  // without covering something. Simplest robust fix: only show the launcher
+  // once the visitor has scrolled past the hero, same corner (bottom-right)
+  // as every other floating action button anywhere.
+  useEffect(() => {
+    let rafId = 0;
+    const check = () => {
+      rafId = 0;
+      setPastHero(window.scrollY > window.innerHeight * 0.6);
+    };
+    const onScroll = () => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(check);
+    };
+    check();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []);
+
+  const showLauncher = pastHero || isOpen;
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -69,18 +96,25 @@ const ChatWidget = () => {
 
   return (
     <>
-      <motion.button
-        type="button"
-        onClick={() => setIsOpen((v) => !v)}
-        aria-label={isOpen ? 'Close chat' : 'Open chat'}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center
-                   rounded-full bg-gradient-to-r from-amber-600 to-orange-600
-                   text-white shadow-lg hover:shadow-amber-500/25 transition-shadow duration-300"
-      >
-        {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
-      </motion.button>
+      <AnimatePresence>
+        {showLauncher && (
+          <motion.button
+            type="button"
+            onClick={() => setIsOpen((v) => !v)}
+            aria-label={isOpen ? 'Close chat' : 'Open chat'}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center
+                       rounded-full bg-gradient-to-r from-amber-600 to-orange-600
+                       text-white shadow-lg hover:shadow-amber-500/25 transition-shadow duration-300"
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {isOpen && (
